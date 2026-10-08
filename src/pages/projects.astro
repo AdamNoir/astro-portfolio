@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Navbar from '../components/Navbar.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = await getCollection('project');
+
+---
+
+<BaseLayout title="Projects">
+  <Navbar />
+  <section class="page active" id="projects">
+    <div class="projects-inner">
+      <h2>Projects</h2>
+
+      <div class="projects-grid">
+        {
+          projects.map((project) => (
+            <ProjectCard
+          name={project.data.name}
+          ,
+          description={project.data.description}
+          ,
+          tags={project.data.tags}
+          ,
+          liveUrl={project.data.liveUrl}
+          ,
+          sourceCodeUrl={project.data.sourceCodeUrl}
+        />
+          ))
+        }
+        
+      </div>
+    </div>
+  </section>
+</BaseLayout>

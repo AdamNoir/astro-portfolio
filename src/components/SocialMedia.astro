@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import SocialMediaIcon from './SocialMediaIcon.astro';
+const socialMedia = await getCollection('socialMedia');
+---
+
+<div class="social-icons">
+  <!--SocialMediaIcon
+    icon="/icons/github.svg"
+    url="https://github.com/AdamNoir"
+    label="Github"
+  />
+
+  <SocialMediaIcon
+    icon="/icons/instagram.svg"
+    url="https://www.instagram.com/iamadamnoir?igsh=NHVoODF5azYzeG92&utm_source=qr"
+    label="Instagram"
+  />
+
+  <SocialMediaIcon
+    icon="/icons/twitter.svg"
+    url="https://x.com/adamnoir335?s=21"
+    label="Twitter"
+  />
+
+  <SocialMediaIcon
+    icon="/icons/mail.svg"
+    url="mailto:ivangutierrez335@icloud.com"
+    label="Mail"
+  /-->
+
+  {
+    socialMedia.map((social) => (
+      <SocialMediaIcon
+        icon={social.data.icon}
+        url={social.data.url}
+        label={social.data.label}
+      />
+    ))
+  }
+</div>
